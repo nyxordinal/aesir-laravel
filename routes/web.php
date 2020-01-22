@@ -16,3 +16,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/edit', 'EditController@index');
 
 Route::get('/add', 'AddController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
