@@ -7,13 +7,9 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Home</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                    <h1 class="m-0 text-dark">
+                        {{$page}}
+                    </h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -22,19 +18,20 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            @isset ($home)
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{{$watched}}</h3>
                             <p>Watched</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-android-checkmark-circle"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('watched') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -42,13 +39,13 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3>{{$watching}}</h3>
                             <p>Watching</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-social-youtube-outline"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('watching') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -56,13 +53,13 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{ $complete }}</h3>
                             <p>Completed Download</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-checkmark"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('complete') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -70,24 +67,25 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>{{ $process }}</h3>
                             <p>On Process Download</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-ios-clock-outline"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('process') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
             </div>
             <!-- /.row -->
+            @endisset
             <!-- Main row -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Brief Anime List</h3>
+                            <h3 class="card-title">Aesir Anime List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -104,9 +102,12 @@
                                 <tbody>
                                     @foreach ($data as $anime)
                                     <tr>
-                                        <td>{{$anime->Title}}</td>
+                                        <td><a href="/detail/{{ $anime->ain }}">
+                                                {{$anime->title}}
+                                            </a>
+                                        </td>
                                         <td>
-                                            @switch($anime->Type)
+                                            @switch($anime->type)
                                             @case(1)
                                             TV
                                             @break
@@ -147,9 +148,9 @@
                                             Error
                                             @endswitch
                                         </td>
-                                        <td>{{$anime->Episode}}</td>
+                                        <td>{{$anime->episode}}</td>
                                         <td>
-                                            @switch($anime->Status)
+                                            @switch($anime->status)
                                             @case(1)
                                             Watching
                                             @break
@@ -173,7 +174,7 @@
                                             @endswitch
                                         </td>
                                         <td>
-                                            @switch($anime->downloadstatus)
+                                            @switch($anime->download_status)
                                             @case(1)
                                             On Process
                                             @break

@@ -19,7 +19,7 @@
             <!-- Main row -->
             <div class="row">
                 <div class="col-12">
-                    <div class="card card-warning">
+                    <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Insert New Anime</h3>
                         </div>
@@ -149,6 +149,11 @@
                                             <label>Note</label>
                                             <textarea class="form-control" name="note" rows="2" placeholder="Enter ..."></textarea>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary">Insert</button>
                                     </div>
                                 </div>
                             </form>

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Main;
 
 class EditController extends Controller
 {
-    public function index()
+
+    public function detail($id)
     {
-        $active = 'active';
-        $title  = 'EDIT';
-        return view('edit', ['estatus' => $active, 'hstatus' => '', 'astatus' => '', 'title' => $title]);
+        $data = Main::find($id);
+        // dd($data->airing_until);
+        return view('edit',['anime'=>$data]);
     }
 }

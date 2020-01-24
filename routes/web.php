@@ -13,10 +13,18 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/edit', 'EditController@index');
+Route::get('/detail/{id}', 'EditController@detail');
 
 Route::get('/insert', 'AddController@index')->name('insert');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/watching', 'HomeController@watching')->name('watching');
+Route::get('/watched', 'HomeController@watched')->name('watched');
+Route::get('/plan', 'HomeController@plan')->name('plan');
+Route::get('/hold', 'HomeController@hold')->name('hold');
+Route::get('/drop', 'HomeController@drop')->name('drop');
+Route::get('/no', 'HomeController@no')->name('no');
+Route::get('/complete', 'HomeController@complete')->name('complete');
+Route::get('/process', 'HomeController@process')->name('process');

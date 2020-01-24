@@ -18,8 +18,8 @@ class CreateMainsTable extends Migration
             $table->string('title', 255);
             $table->text('genre')->nullable();
             $table->smallInteger('episode')->nullable();
-            $table->dateTime('airing_from')->nullable();
-            $table->dateTime('airing_until')->nullable();
+            $table->date('airing_from')->nullable();
+            $table->date('airing_until')->nullable();
             $table->tinyInteger('type')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('download_status')->default(0);
