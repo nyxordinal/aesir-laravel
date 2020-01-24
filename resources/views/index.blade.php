@@ -84,75 +84,129 @@
             <!-- /.row -->
             <!-- Main row -->
             <div class="row">
-              <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Brief Anime List</h3>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Brief Anime List</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Anime Title</th>
+                                        <th>Type</th>
+                                        <th>Episode</th>
+                                        <th>Status</th>
+                                        <th>Download Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data as $anime)
+                                    <tr>
+                                        <td>{{$anime->Title}}</td>
+                                        <td>
+                                            @switch($anime->Type)
+                                            @case(1)
+                                            TV
+                                            @break
+                                            @case(2)
+                                            OVA
+                                            @break
+                                            @case(3)
+                                            ONA
+                                            @break
+                                            @case(4)
+                                            OAD
+                                            @break
+                                            @case(5)
+                                            Movie
+                                            @break
+                                            @case(6)
+                                            Special
+                                            @break
+                                            @case(7)
+                                            BD
+                                            @break
+                                            @case(8)
+                                            OVA & BD
+                                            @break
+                                            @case(9)
+                                            ONA & BD
+                                            @break
+                                            @case(10)
+                                            OAD & BD
+                                            @break
+                                            @case(11)
+                                            Movie & BD
+                                            @break
+                                            @case(12)
+                                            Special & BD
+                                            @break
+                                            @default
+                                            Error
+                                            @endswitch
+                                        </td>
+                                        <td>{{$anime->Episode}}</td>
+                                        <td>
+                                            @switch($anime->Status)
+                                            @case(1)
+                                            Watching
+                                            @break
+                                            @case(2)
+                                            Watched
+                                            @break
+                                            @case(3)
+                                            Plan to Watch
+                                            @break
+                                            @case(4)
+                                            On hold
+                                            @break
+                                            @case(5)
+                                            Dropped
+                                            @break
+                                            @case(6)
+                                            No
+                                            @break
+                                            @default
+                                            Error
+                                            @endswitch
+                                        </td>
+                                        <td>
+                                            @switch($anime->downloadstatus)
+                                            @case(1)
+                                            On Process
+                                            @break
+                                            @case(2)
+                                            Completed
+                                            @break
+                                            @case(3)
+                                            Plan to Download
+                                            @break
+                                            @case(4)
+                                            No
+                                            @break
+                                            @default
+                                            Error
+                                            @endswitch
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Anime Title</th>
+                                        <th>Type</th>
+                                        <th>Episode</th>
+                                        <th>Status</th>
+                                        <th>Download Status</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Anime Title</th>
-                                    <th>Type</th>
-                                    <th>Episode</th>
-                                    <th>Status</th>
-                                    <th>Download Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 5.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5</td>
-                                    <td>C</td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 5.5
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5.5</td>
-                                    <td>A</td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 6
-                                    </td>
-                                    <td>Win 98+</td>
-                                    <td>6</td>
-                                    <td>A</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Anime Title</th>
-                                    <th>Type</th>
-                                    <th>Episode</th>
-                                    <th>Status</th>
-                                    <th>Download Status</th>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
                 </div>
-              </div>
             </div>
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
