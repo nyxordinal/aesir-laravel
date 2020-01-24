@@ -25,13 +25,14 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form role="form">
+                            <form role="form" method="post" action="#">
+                                {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <label>Title</label>
-                                            <input type="text" class="form-control" placeholder="Enter ...">
+                                            <input type="text" name="title" class="form-control" placeholder="Enter ...">
                                         </div>
                                     </div>
                                 </div>
@@ -40,7 +41,7 @@
                                         <!-- textarea -->
                                         <div class="form-group">
                                             <label>Genre</label>
-                                            <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
+                                            <textarea class="form-control" name="genre" rows="2" placeholder="Enter ..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -48,19 +49,19 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="col-form-label" for="inputSuccess">Episode</label>
-                                            <input type="number" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
+                                            <input type="number" name="episode" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="col-form-label" for="inputWarning">Airing (From)</label>
-                                            <input type="date" class="form-control is-warning" id="inputWarning" placeholder="Enter ...">
+                                            <input type="date" name="airfrom" class="form-control is-warning" id="inputWarning" placeholder="Enter ...">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="col-form-label" for="inputError">Airing (Until)</label>
-                                            <input type="date" class="form-control is-invalid" id="inputError" placeholder="Enter ...">
+                                            <input type="date" name="airuntil" class="form-control is-invalid" id="inputError" placeholder="Enter ...">
                                         </div>
                                     </div>
                                 </div>
@@ -69,34 +70,34 @@
                                         <!-- select -->
                                         <div class="form-group">
                                             <label>Type</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="type">
                                                 <option>Pilih...</option>
-                                                <option>TV</option>
-                                                <option>OVA</option>
-                                                <option>ONA</option>
-                                                <option>OAD</option>
-                                                <option>Movie</option>
-                                                <option>Special</option>
-                                                <option>BD</option>
-                                                <option>OVA & BD</option>
-                                                <option>ONA & BD</option>
-                                                <option>OAD & BD</option>
-                                                <option>Movie & BD</option>
-                                                <option>Special & BD</option>
+                                                <option value="1">TV</option>
+                                                <option value="2">OVA</option>
+                                                <option value="3">ONA</option>
+                                                <option value="4">OAD</option>
+                                                <option value="5">Movie</option>
+                                                <option value="6">Special</option>
+                                                <option value="7">BD</option>
+                                                <option value="8">OVA & BD</option>
+                                                <option value="9">ONA & BD</option>
+                                                <option value="10">OAD & BD</option>
+                                                <option value="11">Movie & BD</option>
+                                                <option value="12">Special & BD</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="status">
                                                 <option>Pilih...</option>
-                                                <option>Watching</option>
-                                                <option>Watched</option>
-                                                <option>Plan to Watch</option>
-                                                <option>On hold</option>
-                                                <option>Dropped</option>
-                                                <option>No</option>
+                                                <option value="1">Watching</option>
+                                                <option value="2">Watched</option>
+                                                <option value="3">Plan to Watch</option>
+                                                <option value="4">On hold</option>
+                                                <option value="5">Dropped</option>
+                                                <option value="6">No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -105,38 +106,38 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Download Status</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="downstatus">
                                                 <option>Pilih...</option>
-                                                <option>On Process</option>
-                                                <option>Completed</option>
-                                                <option>Plan to Download</option>
-                                                <option>No</option>
+                                                <option value="1">On Process</option>
+                                                <option value="2">Completed</option>
+                                                <option value="3">Plan to Download</option>
+                                                <option value="4">No</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Resolution</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="resolution">
                                                 <option>Pilih...</option>
-                                                <option>240p</option>
-                                                <option>360p</option>
-                                                <option>480p</option>
-                                                <option>720p</option>
-                                                <option>1080p</option>
-                                                <option>Else...</option>
+                                                <option value="1">240p</option>
+                                                <option value="2">360p</option>
+                                                <option value="3">480p</option>
+                                                <option value="4">720p</option>
+                                                <option value="5">1080p</option>
+                                                <option value="6">Else...</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Storage Device</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="storage">
                                                 <option>Pilih...</option>
-                                                <option>MS-1</option>
-                                                <option>Harddisk External</option>
-                                                <option>Laptop</option>
-                                                <option>Else ...</option>
+                                                <option value="1">MS-1</option>
+                                                <option value="2">Harddisk External</option>
+                                                <option value="3">Laptop</option>
+                                                <option value="4">Else ...</option>
                                             </select>
                                         </div>
                                     </div>
@@ -146,7 +147,7 @@
                                         <!-- textarea -->
                                         <div class="form-group">
                                             <label>Note</label>
-                                            <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
+                                            <textarea class="form-control" name="note" rows="2" placeholder="Enter ..."></textarea>
                                         </div>
                                     </div>
                                 </div>
