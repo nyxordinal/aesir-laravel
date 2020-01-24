@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/edit', 'EditController@index');
 
-Route::get('/add', 'AddController@index');
+Route::get('/insert', 'AddController@index')->name('insert');
 
 Auth::routes();
 

@@ -8,8 +8,6 @@ class AddController extends Controller
 {
     public function index()
     {
-        $active = 'active';
-        $title  = 'ADD';
-        return view('add', ['estatus' => '', 'hstatus' => '', 'astatus' => $active, 'title' => $title]);
+        return view('insert');
     }
 }
