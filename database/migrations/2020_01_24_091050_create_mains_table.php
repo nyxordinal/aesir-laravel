@@ -24,8 +24,8 @@ class CreateMainsTable extends Migration
             $table->tinyInteger('type')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('download_status')->default(0);
-            $table->tinyInteger('resolution')->nullable()->default(0);
-            $table->tinyInteger('storage_device')->nullable()->default(0);
+            $table->tinyInteger('resolution')->default(0);
+            $table->tinyInteger('storage_device')->default(0);
             $table->text('note')->nullable();
             $table->timestamps();
         });

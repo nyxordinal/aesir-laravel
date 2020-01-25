@@ -12,11 +12,15 @@
                     </h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
-            @if (session('anime-name'))
+            @if (session('anime-name')||session('success-edit'))
             <div class="row">
                 <div col-sm-12>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('anime-name') }} berhasil ditambahkan ke database !
+                        @if (session('anime-name'))
+                        "{{ session('anime-name') }}" berhasil ditambahkan ke database !
+                        @elseif(session('success-edit'))
+                        Data "{{ session('success-edit') }}" berhasil diupdate !
+                        @endif
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -120,6 +124,9 @@
                                         </td>
                                         <td>
                                             @switch($anime->type)
+                                            @case(0)
+                                            ?
+                                            @break
                                             @case(1)
                                             TV
                                             @break
@@ -160,9 +167,12 @@
                                             Error
                                             @endswitch
                                         </td>
-                                        <td>{{$anime->episode}}</td>
+                                        <td>{{$anime->episode?$anime->episode:'?'}}</td>
                                         <td>
                                             @switch($anime->status)
+                                            @case(0)
+                                            ?
+                                            @break
                                             @case(1)
                                             Watching
                                             @break
@@ -187,6 +197,9 @@
                                         </td>
                                         <td>
                                             @switch($anime->download_status)
+                                            @case(0)
+                                            ?
+                                            @break
                                             @case(1)
                                             On Process
                                             @break

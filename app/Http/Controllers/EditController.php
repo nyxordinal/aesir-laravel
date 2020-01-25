@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Main;
+use Illuminate\Http\Request;
 
-class EditController extends Controller
-{
+class EditController extends Controller {
 
-    public function detail($id)
-    {
-        $data = Main::find($id);
-        return view('edit',['anime'=>$data]);
-    }
+	public function detail($id) {
+		$data = Main::find($id);
+		return view('edit', ['anime' => $data]);
+	}
 
-    public function update(Request $req, $id)
-    {
-    	$data=Main::find($id);
-    	$data->title = $req->title;
+	public function update(Request $req, $id) {
+		$data = Main::find($id);
+		$data->title = $req->title;
 		$data->genre = $req->genre;
 		$data->episode = $req->episode;
 		$data->airing_from = $req->airfrom;
@@ -29,6 +26,6 @@ class EditController extends Controller
 		$data->storage_device = $req->storage;
 		$data->note = $req->note;
 		$data->save();
-		return back()->withInput();
-    }
+		return redirect()->route('home')->with('success-edit', $data->title);
+	}
 }

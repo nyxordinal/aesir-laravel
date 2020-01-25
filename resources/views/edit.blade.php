@@ -71,7 +71,7 @@
                                         <div class="form-group">
                                             <label>Type</label>
                                             <select class="form-control" name="type">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1" @if ($anime->type==1)
                                                     selected
                                                     @endif
@@ -127,7 +127,7 @@
                                         <div class="form-group">
                                             <label>Status</label>
                                             <select class="form-control" name="status">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1" @if ($anime->status==1)
                                                     selected
                                                     @endif
@@ -161,7 +161,7 @@
                                         <div class="form-group">
                                             <label>Download Status</label>
                                             <select class="form-control" name="downstatus">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1" @if ($anime->download_status==1)
                                                     selected
                                                     @endif
@@ -185,7 +185,7 @@
                                         <div class="form-group">
                                             <label>Resolution</label>
                                             <select class="form-control" name="resolution">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1" @if ($anime->resolution==1)
                                                     selected
                                                     @endif
@@ -217,7 +217,7 @@
                                         <div class="form-group">
                                             <label>Storage Device</label>
                                             <select class="form-control" name="storage">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1" @if ($anime->storage_device==1)
                                                     selected
                                                     @endif
