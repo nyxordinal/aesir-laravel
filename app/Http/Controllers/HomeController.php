@@ -21,6 +21,7 @@ class HomeController extends Controller {
 	 * @return \Illuminate\Contracts\Support\Renderable
 	 */
 	public function index() {
+		// return view('home');
 		$data = Main::all();
 		$watched = Main::where('status', 2)->count();
 		$watching = Main::where('status', 1)->count();
