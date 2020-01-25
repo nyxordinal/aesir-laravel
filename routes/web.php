@@ -9,19 +9,21 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-Auth::routes();
+Auth::routes([
+	'register' => false,
+	'reset' => false,
+	'verify' => false,
+]);
 
 Route::get('/', 'HomeController@index');
 
-
 Route::get('/detail/{id}', 'EditController@detail');
-Route::post('/detail/{id}','EditController@update');
+Route::post('/detail/{id}', 'EditController@update');
 
 Route::get('/create', 'AddController@display')->name('insert');
-Route::post('/create','AddController@insertNewAnime');
-
+Route::post('/create', 'AddController@insertNewAnime');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/watching', 'HomeController@watching')->name('watching');
