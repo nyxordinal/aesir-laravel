@@ -14,8 +14,10 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/detail/{id}', 'EditController@detail');
+Route::post('/detail/{id}','EditController@update');
 
-Route::get('/insert', 'AddController@index')->name('insert');
+Route::get('/create', 'AddController@display')->name('insert');
+Route::post('/create','AddController@insertNewAnime');
 
 Auth::routes();
 

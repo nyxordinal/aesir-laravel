@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Insert</h1>
+                    <h1 class="m-0 text-dark">Create</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -21,12 +21,12 @@
                 <div class="col-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Insert New Anime</h3>
+                            <h3 class="card-title">Add New Anime</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form role="form" method="post" action="#">
-                                {{ csrf_field() }}
+                            <form role="form" method="post" action="/create">
+                                @csrf
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <!-- text input -->

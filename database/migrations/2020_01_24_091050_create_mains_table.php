@@ -13,6 +13,7 @@ class CreateMainsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('mains');
         Schema::create('mains', function (Blueprint $table) {
             $table->bigIncrements('ain');
             $table->string('title', 255);

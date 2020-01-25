@@ -9,7 +9,7 @@
             <a href="/" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('insert') }}" class="nav-link">Insert</a>
+            <a href="{{ route('insert') }}" class="nav-link">Add New Anime</a>
         </li>
     </ul>
     <!-- SEARCH FORM -->

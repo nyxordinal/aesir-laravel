@@ -25,7 +25,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form role="form" method="post" action="#">
+                            <form role="form" method="post" action="/detail/{{$anime->ain}}">
                                 {{ csrf_field() }}
                                 <div class="row">
                                     <div class="col-sm-12">
