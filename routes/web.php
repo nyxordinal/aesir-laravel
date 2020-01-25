@@ -11,7 +11,10 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', 'HomeController@index');
+
 
 Route::get('/detail/{id}', 'EditController@detail');
 Route::post('/detail/{id}','EditController@update');
@@ -19,7 +22,6 @@ Route::post('/detail/{id}','EditController@update');
 Route::get('/create', 'AddController@display')->name('insert');
 Route::post('/create','AddController@insertNewAnime');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/watching', 'HomeController@watching')->name('watching');

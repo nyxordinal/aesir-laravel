@@ -13,7 +13,7 @@
                 <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -25,13 +25,13 @@
                     <a href="/" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Home
+                            Dashboard
                         </p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('watching') }}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-dice-one"></i>
                         <p>
                             Watching
                         </p>
@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('watched') }}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-dice-two"></i>
                         <p>
                             Watched
                         </p>
@@ -47,7 +47,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('plan') }}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-dice-two"></i>
                         <p>
                             Plan to Watch
                         </p>
@@ -55,7 +55,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('hold') }}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-dice-three"></i>
                         <p>
                             On hold
                         </p>
@@ -63,7 +63,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('drop') }}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-dice-four"></i>
                         <p>
                             Dropped
                         </p>
@@ -71,9 +71,17 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('no') }}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="nav-icon fas fa-dice-five"></i>
                         <p>
                             No
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('no') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>
+                            Logout
                         </p>
                     </a>
                 </li>
