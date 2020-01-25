@@ -14,7 +14,7 @@
             </div><!-- /.row -->
             @if (session('anime-name')||session('success-edit'))
             <div class="row">
-                <div col-sm-12>
+                <div class="col-sm-12">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         @if (session('anime-name'))
                         "{{ session('anime-name') }}" berhasil ditambahkan ke database !

@@ -11,6 +11,9 @@ class AddController extends Controller {
 	}
 
 	public function insertNewAnime(Request $req) {
+		if (($req->downstatus != 1 && $req->downstatus != 2) && ($req->resolution != 0 || $req->storage != 0)) {
+			return back()->with('download-alert', 'Before you can set Resolution and Storage Device, please set Download Status to "On Process" or "Completed"')->withInput();
+		}
 		$data = new Main;
 		$data->title = $req->title;
 		$data->genre = $req->genre;
