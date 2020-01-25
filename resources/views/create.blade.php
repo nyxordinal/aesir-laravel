@@ -71,7 +71,7 @@
                                         <div class="form-group">
                                             <label>Type</label>
                                             <select class="form-control" name="type">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1">TV</option>
                                                 <option value="2">OVA</option>
                                                 <option value="3">ONA</option>
@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label>Status</label>
                                             <select class="form-control" name="status">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1">Watching</option>
                                                 <option value="2">Watched</option>
                                                 <option value="3">Plan to Watch</option>
@@ -107,7 +107,7 @@
                                         <div class="form-group">
                                             <label>Download Status</label>
                                             <select class="form-control" name="downstatus">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1">On Process</option>
                                                 <option value="2">Completed</option>
                                                 <option value="3">Plan to Download</option>
@@ -119,7 +119,7 @@
                                         <div class="form-group">
                                             <label>Resolution</label>
                                             <select class="form-control" name="resolution">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1">240p</option>
                                                 <option value="2">360p</option>
                                                 <option value="3">480p</option>
@@ -133,7 +133,7 @@
                                         <div class="form-group">
                                             <label>Storage Device</label>
                                             <select class="form-control" name="storage">
-                                                <option>Pilih...</option>
+                                                <option value="0">Pilih...</option>
                                                 <option value="1">MS-1</option>
                                                 <option value="2">Harddisk External</option>
                                                 <option value="3">Laptop</option>

@@ -24,6 +24,6 @@ class AddController extends Controller {
 		$data->storage_device = $req->storage;
 		$data->note = $req->note;
 		$data->save();
-		return redirect()->route('insert');
+		return redirect()->route('home')->with('anime-name', $data->title);
 	}
 }
