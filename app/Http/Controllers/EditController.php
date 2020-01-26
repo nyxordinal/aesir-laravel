@@ -16,6 +16,17 @@ class EditController extends Controller {
 		if (($req->downstatus != 1 && $req->downstatus != 2) && ($req->resolution != 0 || $req->storage != 0)) {
 			return back()->with('download-alert', 'Before you can set Resolution and Storage Device, please set Download Status to "On Process" or "Completed"')->withInput();
 		}
+
+		$rules = [
+			'title' => 'required',
+		];
+
+		$customMessages = [
+			'required' => 'Please provide an anime title !',
+		];
+
+		$this->validate($req, $rules, $customMessages);
+
 		$data = Main::find($id);
 		$data->title = $req->title;
 		$data->genre = $req->genre;

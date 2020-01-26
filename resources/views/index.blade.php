@@ -17,9 +17,9 @@
                 <div class="col-sm-12">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         @if (session('anime-name'))
-                        "{{ session('anime-name') }}" berhasil ditambahkan ke database !
+                        "{{ session('anime-name') }}" successfully added to database !
                         @elseif(session('success-edit'))
-                        Data "{{ session('success-edit') }}" berhasil diupdate !
+                        Data "{{ session('success-edit') }}" updated successfully !
                         @endif
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
