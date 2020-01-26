@@ -2,16 +2,16 @@ APP_NAME=Aesir
 APP_ENV=local
 APP_KEY=base64:zK0pNj4tfn6ngglTikXaEVlLXbHyd6OW/y9fM7ri0rk=
 APP_DEBUG=false
-APP_URL=http://localhost
+APP_URL=https://aesirk2.000webhostapp.com
 
 LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=aesir
-DB_USERNAME=root
-DB_PASSWORD=
+DB_DATABASE=id12368727_aesirapp
+DB_USERNAME=id12368727_aesiruser
+DB_PASSWORD=fakhri1234
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
