@@ -16,6 +16,7 @@ Auth::routes([
     'reset' => false,
     'verify' => false,
 ]);
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
@@ -24,6 +25,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/create', 'AddController@display')->name('insert');
     Route::post('/create', 'AddController@insertNewAnime');
+
+    Route::get('/profile', 'AccountController@displayProfile')->name('profile');
+    Route::put('/update-profile', 'AccountController@updateProfile')->name('profile.update.submit');
+
+    Route::prefix('account')->group(function () {
+        Route::put('/email', 'AccountController@changeEmail')->name('account.email.change.submit');
+        Route::put('/password', 'AccountController@changePassword')->name('account.password.change.submit');
+    });
 
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::prefix('watch-status')->group(function () {
@@ -34,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/drop', 'HomeController@watchDrop')->name('watch.drop');
         Route::get('/no', 'HomeController@watchNo')->name('watch.no');
     });
+
     Route::prefix('download-status')->group(function () {
         Route::get('/process', 'HomeController@downloadProcess')->name('download.process');
         Route::get('/complete', 'HomeController@downloadComplete')->name('download.complete');
