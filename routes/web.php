@@ -34,7 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/password', 'AccountController@changePassword')->name('account.password.change.submit');
     });
 
-    // Route::get('/home', 'HomeController@index')->name('home');
     Route::prefix('watch-status')->group(function () {
         Route::get('/watching', 'HomeController@watchWatching')->name('watch.watching');
         Route::get('/watched', 'HomeController@watchWatched')->name('watch.watched');
