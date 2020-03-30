@@ -14,8 +14,8 @@
                 <img src="{{ asset('img/user.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#"
-                    class="d-block">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>
+                <a href="{{ route('profile') }}"
+                    class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
