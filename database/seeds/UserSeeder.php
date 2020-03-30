@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Muhammad Fakhri',
             'email' => 'fakhri@codepanda.id',
+            'job' => 'College Student',
             'password' => Hash::make('password'),
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
