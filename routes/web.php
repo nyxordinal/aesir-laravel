@@ -26,12 +26,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/create', 'AddController@insertNewAnime');
 
     // Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/watching', 'HomeController@watching')->name('watching');
-    Route::get('/watched', 'HomeController@watched')->name('watched');
-    Route::get('/plan', 'HomeController@plan')->name('plan');
-    Route::get('/hold', 'HomeController@hold')->name('hold');
-    Route::get('/drop', 'HomeController@drop')->name('drop');
-    Route::get('/no', 'HomeController@no')->name('no');
-    Route::get('/complete', 'HomeController@complete')->name('complete');
-    Route::get('/process', 'HomeController@process')->name('process');
+    Route::prefix('watch-status')->group(function () {
+        Route::get('/watching', 'HomeController@watchWatching')->name('watch.watching');
+        Route::get('/watched', 'HomeController@watchWatched')->name('watch.watched');
+        Route::get('/plan', 'HomeController@watchPlan')->name('watch.plan');
+        Route::get('/hold', 'HomeController@watchHold')->name('watch.hold');
+        Route::get('/drop', 'HomeController@watchDrop')->name('watch.drop');
+        Route::get('/no', 'HomeController@watchNo')->name('watch.no');
+    });
+    Route::prefix('download-status')->group(function () {
+        Route::get('/process', 'HomeController@downloadProcess')->name('download.process');
+        Route::get('/complete', 'HomeController@downloadComplete')->name('download.complete');
+        Route::get('/plan', 'HomeController@downloadPlan')->name('download.plan');
+        Route::get('/no', 'HomeController@downloadNo')->name('download.no');
+    });
 });
