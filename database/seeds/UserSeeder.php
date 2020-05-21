@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         DB::table('users')->delete();
         User::create([
             'name' => 'Muhammad Fakhri',
-            'email' => 'fakhri@codepanda.id',
+            'email' => 'admin@muhammadfakhri.my.id',
             'job' => 'College Student',
             'password' => Hash::make('password'),
             'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
