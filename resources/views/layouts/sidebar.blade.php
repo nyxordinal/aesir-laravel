@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
+    <a href="{{ route('home') }}" class="brand-link">
         <img src="{{ asset('img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">Aesir</span>
@@ -171,13 +171,11 @@
                 <!-- End of Download Status Menu -->
                 <!-- Storage Menu -->
                 <li class="nav-item has-treeview
-                @if ($route === route('download.laptop') || $route === route('download.external1'))
+                @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.else'))
                 menu-open
                 @endif
                 ">
-                    <a href="#" class="nav-link @if ($route === route('download.laptop') || $route === route('download.external1'))
-                    active
-                    @endif">
+                    <a href="#" class="nav-link @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.else'))active @endif">
                         <i class="nav-icon fas fa-archive"></i>
                         <p>
                             Storage
@@ -186,9 +184,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.ms1') }}" class="nav-link @if (url()->current() === route('download.ms1'))
-                                active
-                            @endif">
+                            <a href="{{ route('download.ms1') }}" class="nav-link @if (url()->current() === route('download.ms1'))active @endif">
                                 <i class="nav-icon fab fa-usb"></i>
                                 <p>
                                     MS-1 (Flash Drive)
@@ -196,9 +192,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.external1') }}" class="nav-link @if (url()->current() === route('download.external1'))
-                                active
-                            @endif">
+                            <a href="{{ route('download.external1') }}" class="nav-link @if (url()->current() === route('download.external1'))active @endif">
                                 <i class="nav-icon fas fa-hdd"></i>
                                 <p>
                                     Harddisk External
@@ -206,9 +200,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.laptop') }}" class="nav-link @if (url()->current() === route('download.laptop'))
-                                active
-                            @endif">
+                            <a href="{{ route('download.laptop') }}" class="nav-link @if (url()->current() === route('download.laptop'))active @endif">
                                 <i class="nav-icon fas fa-laptop"></i>
                                 <p>
                                     Laptop
@@ -216,9 +208,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.else') }}" class="nav-link @if (url()->current() === route('download.else'))
-                                active
-                            @endif">
+                            <a href="{{ route('download.else') }}" class="nav-link @if (url()->current() === route('download.else'))active @endif">
                                 <i class="nav-icon fas fa-circle"></i>
                                 <p>
                                     Else ...
