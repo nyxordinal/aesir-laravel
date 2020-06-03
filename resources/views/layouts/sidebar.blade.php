@@ -14,8 +14,7 @@
                 <img src="{{ asset('img/user.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="{{ route('profile') }}"
-                    class="d-block">{{ Auth::user()->name }}</a>
+                <a href="{{ route('profile') }}" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -55,7 +54,7 @@
                             <a href="{{ route('watch.watching') }}" class="nav-link @if (url()->current() === route('watch.watching'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-one"></i>
+                                <i class="nav-icon fas fa-play"></i>
                                 <p>
                                     Watching
                                 </p>
@@ -65,7 +64,7 @@
                             <a href="{{ route('watch.watched') }}" class="nav-link @if (url()->current() === route('watch.watched'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-two"></i>
+                                <i class="nav-icon fas fa-check"></i>
                                 <p>
                                     Watched
                                 </p>
@@ -75,7 +74,7 @@
                             <a href="{{ route('watch.plan') }}" class="nav-link @if (url()->current() === route('watch.plan'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-three"></i>
+                                <i class="nav-icon fas fa-clock"></i>
                                 <p>
                                     Plan to Watch
                                 </p>
@@ -85,7 +84,7 @@
                             <a href="{{ route('watch.hold') }}" class="nav-link @if (url()->current() === route('watch.hold'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-four"></i>
+                                <i class="nav-icon fas fa-pause"></i>
                                 <p>
                                     On hold
                                 </p>
@@ -95,7 +94,7 @@
                             <a href="{{ route('watch.drop') }}" class="nav-link @if (url()->current() === route('watch.drop'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-five"></i>
+                                <i class="nav-icon fas fa-window-close"></i>
                                 <p>
                                     Dropped
                                 </p>
@@ -105,7 +104,7 @@
                             <a href="{{ route('watch.no') }}" class="nav-link @if (url()->current() === route('watch.no'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-six"></i>
+                                <i class="nav-icon fas fa-ban"></i>
                                 <p>
                                     No
                                 </p>
@@ -115,10 +114,8 @@
                 </li>
                 <!-- End of Watch Status Menu -->
                 <!-- Download Status Menu -->
-                <li class="nav-item has-treeview
-                @if ($route === route('download.process') || $route === route('download.complete') || $route === route('download.plan') || $route === route('download.no'))
-                menu-open
-                @endif">
+                <li class="nav-item has-treeview @if ($route === route('download.process') || $route === route('download.complete') || $route === route('download.plan') || $route === route('download.no'))
+                menu-open @endif">
                     <a href="#" class="nav-link @if ($route === route('download.process') || $route === route('download.complete') || $route === route('download.plan') || $route === route('download.no'))
                     active
                     @endif">
@@ -133,7 +130,7 @@
                             <a href="{{ route('download.process') }}" class="nav-link @if (url()->current() === route('download.process'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-one"></i>
+                                <i class="nav-icon fas fa-spinner"></i>
                                 <p>
                                     On Process
                                 </p>
@@ -143,7 +140,7 @@
                             <a href="{{ route('download.complete') }}" class="nav-link @if (url()->current() === route('download.complete'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-two"></i>
+                                <i class="nav-icon fas fa-check"></i>
                                 <p>
                                     Complete
                                 </p>
@@ -153,7 +150,7 @@
                             <a href="{{ route('download.plan') }}" class="nav-link @if (url()->current() === route('download.plan'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-three"></i>
+                                <i class="nav-icon fas fa-clock"></i>
                                 <p>
                                     Plan to Download
                                 </p>
@@ -163,7 +160,7 @@
                             <a href="{{ route('download.no') }}" class="nav-link @if (url()->current() === route('download.no'))
                                 active
                             @endif">
-                                <i class="nav-icon fas fa-dice-four"></i>
+                                <i class="nav-icon fas fa-ban"></i>
                                 <p>
                                     No
                                 </p>
@@ -172,6 +169,65 @@
                     </ul>
                 </li>
                 <!-- End of Download Status Menu -->
+                <!-- Storage Menu -->
+                <li class="nav-item has-treeview
+                @if ($route === route('download.laptop') || $route === route('download.external1'))
+                menu-open
+                @endif
+                ">
+                    <a href="#" class="nav-link @if ($route === route('download.laptop') || $route === route('download.external1'))
+                    active
+                    @endif">
+                        <i class="nav-icon fas fa-archive"></i>
+                        <p>
+                            Storage
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('download.ms1') }}" class="nav-link @if (url()->current() === route('download.ms1'))
+                                active
+                            @endif">
+                                <i class="nav-icon fab fa-usb"></i>
+                                <p>
+                                    MS-1 (Flash Drive)
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('download.external1') }}" class="nav-link @if (url()->current() === route('download.external1'))
+                                active
+                            @endif">
+                                <i class="nav-icon fas fa-hdd"></i>
+                                <p>
+                                    Harddisk External
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('download.laptop') }}" class="nav-link @if (url()->current() === route('download.laptop'))
+                                active
+                            @endif">
+                                <i class="nav-icon fas fa-laptop"></i>
+                                <p>
+                                    Laptop
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('download.else') }}" class="nav-link @if (url()->current() === route('download.else'))
+                                active
+                            @endif">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Else ...
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End of Storage Menu -->
                 <li class="nav-item has-treeview">
                     <a href="{{ route('logout') }}" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
