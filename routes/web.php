@@ -56,4 +56,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/laptop', 'HomeController@storageLaptop')->name('download.laptop');
         Route::get('/else', 'HomeController@storageElse')->name('download.else');
     });
+
+    Route::post('/export', 'AccountController@exportData')->name('export');
 });

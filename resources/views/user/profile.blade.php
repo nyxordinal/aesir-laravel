@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active">User Profile</li>
                     </ol>
                 </div>
@@ -46,13 +46,16 @@
                             <ul class="nav nav-pills">
                                 <li class="nav-item"><a class="nav-link active" href="#profile"
                                         data-toggle="tab">Profile</a>
+                                </li>
                                 <li class="nav-item"><a class="nav-link" href="#account" data-toggle="tab">Account</a>
                                 </li>
+                                <li class="nav-item"><a class="nav-link" href="#data" data-toggle="tab">Data</a>
                                 </li>
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content">
+                                <!-- tab-pane Profile -->
                                 <div class="active tab-pane" id="profile">
                                     <form class="form-horizontal" method="POST"
                                         action="{{ route('profile.update.submit') }}">
@@ -74,12 +77,13 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Update Profile</button>
+                                                <button type="submit" class="btn btn-info">Update Profile</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <!-- /.tab-pane -->
+                                <!-- tab-pane Account -->
                                 <div class="tab-pane" id="account">
                                     <form class="form-horizontal" method="POST"
                                         action="{{ route('account.email.change.submit') }}">
@@ -110,7 +114,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Change Email</button>
+                                                <button type="submit" class="btn btn-info">Change Email</button>
                                             </div>
                                         </div>
                                     </form>
@@ -137,7 +141,37 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Change Password</button>
+                                                <button type="submit" class="btn btn-info">Change Password</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <!-- tab-pane Data -->
+                                <div class="tab-pane" id="data">
+                                    <form class="form-horizontal" method="POST" action="{{ route('export') }}">
+                                        @csrf
+                                        <h3 class="mb-3">Export Data</h3>
+                                        <div class="form-group row">
+                                            <label for="storage" class="col-sm-2 col-form-label">Storage</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control col-md-4" name="storage" required>
+                                                    <option>Pilih...
+                                                    </option>
+                                                    <option value="1">MS-1
+                                                    </option>
+                                                    <option value="2">Harddisk
+                                                        External</option>
+                                                    <option value="3">Laptop
+                                                    </option>
+                                                    <option value="4">Else ...
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                                <button type="submit" class="btn btn-info">Export</button>
                                             </div>
                                         </div>
                                     </form>
