@@ -108,12 +108,12 @@ class HomeController extends Controller
     public function storageExternal1()
     {
         $data = Main::where('storage_device', 2)->get();
-        return view('index', ['data' => $data, 'page' => 'Storage Harddisk External']);
+        return view('index', ['data' => $data, 'page' => 'Storage Harddisk External 1 (250 GB)']);
     }
 
-    public function storageElse()
+    public function storageExternal2()
     {
         $data = Main::where('storage_device', 4)->get();
-        return view('index', ['data' => $data, 'page' => 'Storage Else']);
+        return view('index', ['data' => $data, 'page' => 'Storage Harddisk External 2 (4 TB)']);
     }
 }

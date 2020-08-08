@@ -171,11 +171,12 @@
                 <!-- End of Download Status Menu -->
                 <!-- Storage Menu -->
                 <li class="nav-item has-treeview
-                @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.else'))
+                @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.external2'))
                 menu-open
                 @endif
                 ">
-                    <a href="#" class="nav-link @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.else'))active @endif">
+                    <a href="#"
+                        class="nav-link @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.external2'))active @endif">
                         <i class="nav-icon fas fa-archive"></i>
                         <p>
                             Storage
@@ -184,7 +185,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.ms1') }}" class="nav-link @if (url()->current() === route('download.ms1'))active @endif">
+                            <a href="{{ route('download.ms1') }}"
+                                class="nav-link @if (url()->current() === route('download.ms1'))active @endif">
                                 <i class="nav-icon fab fa-usb"></i>
                                 <p>
                                     MS-1 (Flash Drive)
@@ -192,32 +194,43 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.external1') }}" class="nav-link @if (url()->current() === route('download.external1'))active @endif">
+                            <a href="{{ route('download.external1') }}"
+                                class="nav-link @if (url()->current() === route('download.external1'))active @endif">
                                 <i class="nav-icon fas fa-hdd"></i>
                                 <p>
-                                    Harddisk External
+                                    Harddisk Ext 1 (250 GB)
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.laptop') }}" class="nav-link @if (url()->current() === route('download.laptop'))active @endif">
+                            <a href="{{ route('download.external2') }}"
+                                class="nav-link @if (url()->current() === route('download.external2'))active @endif">
+                                <i class="nav-icon fas fa-hdd"></i>
+                                <p>
+                                    Harddisk Ext 2 (4 TB)
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('download.laptop') }}"
+                                class="nav-link @if (url()->current() === route('download.laptop'))active @endif">
                                 <i class="nav-icon fas fa-laptop"></i>
                                 <p>
                                     Laptop
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="{{ route('download.else') }}" class="nav-link @if (url()->current() === route('download.else'))active @endif">
-                                <i class="nav-icon fas fa-circle"></i>
-                                <p>
-                                    Else ...
-                                </p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
                 <!-- End of Storage Menu -->
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('migrate') }}" class="nav-link">
+                        <i class="nav-icon fas fa-hdd"></i>
+                        <p>
+                            Migrate Storage
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('logout') }}" class="nav-link"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

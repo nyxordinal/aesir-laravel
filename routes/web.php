@@ -53,9 +53,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('storage')->group(function () {
         Route::get('/ms1', 'HomeController@storageMS1')->name('download.ms1');
         Route::get('/ext1', 'HomeController@storageExternal1')->name('download.external1');
+        Route::get('/ext2', 'HomeController@storageExternal2')->name('download.external2');
         Route::get('/laptop', 'HomeController@storageLaptop')->name('download.laptop');
-        Route::get('/else', 'HomeController@storageElse')->name('download.else');
     });
 
     Route::post('/export', 'AccountController@exportData')->name('export');
+    Route::get('/migrate-storage', 'AccountController@migrateConfirm')->name('migrate');
+    Route::get('/migrating', 'AccountController@migrate')->name('migrating');
 });
