@@ -111,23 +111,18 @@ class AccountController extends Controller
         )->download($fileName);
     }
 
-    public function migrateConfirm(Request $request)
-    {
-        return view('migrate');
-    }
+    // public function migrateConfirm(Request $request)
+    // {
+    //     return view('migrate');
+    // }
 
-    public function migrate(Request $request)
-    {
-        // $allAnime = Main::where([
-        //     ['download_status', 2],
-        //     ['storage_device', '!=', 4]
-        // ])->get();
-        $allAnime = Main::where('download_status', 2)->get();
-        // dd($allAnime);
-        foreach ($allAnime as $anime) {
-            $anime->storage_device = 4;
-            $anime->save();
-        }
-        return view('migrate')->with('success', 'Migrate storage data success');
-    }
+    // public function migrate(Request $request)
+    // {
+    //     $allAnime = Main::where('download_status', 2)->get();
+    //     foreach ($allAnime as $anime) {
+    //         $anime->storage_device = 4;
+    //         $anime->save();
+    //     }
+    //     return view('migrate')->with('success', 'Migrate storage data success');
+    // }
 }

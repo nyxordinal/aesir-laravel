@@ -58,6 +58,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::post('/export', 'AccountController@exportData')->name('export');
-    Route::get('/migrate-storage', 'AccountController@migrateConfirm')->name('migrate');
-    Route::get('/migrating', 'AccountController@migrate')->name('migrating');
+    // Route::get('/migrate-storage', 'AccountController@migrateConfirm')->name('migrate');
+    // Route::get('/migrating', 'AccountController@migrate')->name('migrating');
 });
