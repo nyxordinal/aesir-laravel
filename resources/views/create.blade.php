@@ -163,9 +163,9 @@
                                             <select class="form-control" name="storage">
                                                 <option value="0" @if (old('storage')==0) selected @endif>Pilih...</option>
                                                 <option value="1" @if (old('storage')==1) selected @endif>MS-1</option>
-                                                <option value="2" @if (old('storage')==2) selected @endif>Harddisk External</option>
+                                                <option value="2" @if (old('storage')==2) selected @endif>Harddisk Ext 1 (250 GB)</option>
                                                 <option value="3" @if (old('storage')==3) selected @endif>Laptop</option>
-                                                <option value="4" @if (old('storage')==4) selected @endif>Else ...</option>
+                                                <option value="4" @if (old('storage')==4) selected @endif>Harddisk Ext 2 (4 TB)</option>
                                             </select>
                                         </div>
                                     </div>
