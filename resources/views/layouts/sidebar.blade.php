@@ -33,16 +33,19 @@
                     </a>
                 </li>
                 @php
-                $route = url()->current();
+                // Get current URI
+                $fullRoute = url()->full();
+                $appUrl = env('APP_URL');
+                $pieces = explode("/", $appUrl);
+                $pattern = "/" . $pieces[0] . "\/\/" . $pieces[2] . "/";
+                $route = preg_replace($pattern, "", $fullRoute);
                 @endphp
+
                 <!-- Watch Status Menu -->
                 <li class="nav-item has-treeview
-                @if ($route === route('watch.watching') || $route === route('watch.watched') || $route === route('watch.plan') || $route === route('watch.hold') || $route === route('watch.drop') || $route === route('watch.no'))
-                menu-open
-                @endif">
-                    <a href="#" class="nav-link @if ($route === route('watch.watching') || $route === route('watch.watched') || $route === route('watch.plan') || $route === route('watch.hold') || $route === route('watch.drop') || $route === route('watch.no'))
-                    active
-                    @endif">
+                @if (preg_match("/anime\?status=/", $route)) menu-open @endif">
+                    <a href="#" class="nav-link
+                    @if (preg_match("/anime\?status=/", $route)) active @endif">
                         <i class="nav-icon fab fa-youtube"></i>
                         <p>
                             Watch Status
@@ -51,9 +54,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('watch.watching') }}" class="nav-link @if (url()->current() === route('watch.watching'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['status' => '1']) }}"
+                                class="nav-link @if ($route === "/anime?status=1") active @endif">
                                 <i class="nav-icon fas fa-play"></i>
                                 <p>
                                     Watching
@@ -61,9 +63,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('watch.watched') }}" class="nav-link @if (url()->current() === route('watch.watched'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['status' => '2']) }}"
+                                class="nav-link @if ($route === "/anime?status=2") active @endif">
                                 <i class="nav-icon fas fa-check"></i>
                                 <p>
                                     Watched
@@ -71,9 +72,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('watch.plan') }}" class="nav-link @if (url()->current() === route('watch.plan'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['status' => '3']) }}"
+                                class="nav-link @if ($route === "/anime?status=3") active @endif">
                                 <i class="nav-icon fas fa-clock"></i>
                                 <p>
                                     Plan to Watch
@@ -81,9 +81,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('watch.hold') }}" class="nav-link @if (url()->current() === route('watch.hold'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['status' => '4']) }}"
+                                class="nav-link @if ($route === "/anime?status=4") active @endif">
                                 <i class="nav-icon fas fa-pause"></i>
                                 <p>
                                     On hold
@@ -91,9 +90,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('watch.drop') }}" class="nav-link @if (url()->current() === route('watch.drop'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['status' => '5']) }}"
+                                class="nav-link @if ($route === "/anime?status=5") active @endif">
                                 <i class="nav-icon fas fa-window-close"></i>
                                 <p>
                                     Dropped
@@ -101,9 +99,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('watch.no') }}" class="nav-link @if (url()->current() === route('watch.no'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['status' => '6']) }}"
+                                class="nav-link @if ($route === "/anime?status=6") active @endif">
                                 <i class="nav-icon fas fa-ban"></i>
                                 <p>
                                     No
@@ -114,11 +111,8 @@
                 </li>
                 <!-- End of Watch Status Menu -->
                 <!-- Download Status Menu -->
-                <li class="nav-item has-treeview @if ($route === route('download.process') || $route === route('download.complete') || $route === route('download.plan') || $route === route('download.no'))
-                menu-open @endif">
-                    <a href="#" class="nav-link @if ($route === route('download.process') || $route === route('download.complete') || $route === route('download.plan') || $route === route('download.no'))
-                    active
-                    @endif">
+                <li class="nav-item has-treeview @if (preg_match("/anime\?download=/", $route)) menu-open @endif">
+                    <a href="#" class="nav-link @if (preg_match("/anime\?download=/", $route)) active @endif">
                         <i class="nav-icon fas fa-download"></i>
                         <p>
                             Download Status
@@ -127,9 +121,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.process') }}" class="nav-link @if (url()->current() === route('download.process'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['download' => '1']) }}"
+                                class="nav-link @if ($route === "/anime?download=1") active @endif">
                                 <i class="nav-icon fas fa-spinner"></i>
                                 <p>
                                     On Process
@@ -137,9 +130,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.complete') }}" class="nav-link @if (url()->current() === route('download.complete'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['download' => '2']) }}"
+                                class="nav-link @if ($route === "/anime?download=2") active @endif">
                                 <i class="nav-icon fas fa-check"></i>
                                 <p>
                                     Complete
@@ -147,9 +139,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.plan') }}" class="nav-link @if (url()->current() === route('download.plan'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['download' => '3']) }}"
+                                class="nav-link @if ($route === "/anime?download=3") active @endif">
                                 <i class="nav-icon fas fa-clock"></i>
                                 <p>
                                     Plan to Download
@@ -157,9 +148,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.no') }}" class="nav-link @if (url()->current() === route('download.no'))
-                                active
-                            @endif">
+                            <a href="{{ route('anime', ['download' => '4']) }}"
+                                class="nav-link @if ($route === "/anime?download=4") active @endif">
                                 <i class="nav-icon fas fa-ban"></i>
                                 <p>
                                     No
@@ -171,22 +161,18 @@
                 <!-- End of Download Status Menu -->
                 <!-- Storage Menu -->
                 <li class="nav-item has-treeview
-                @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.external2'))
-                menu-open
-                @endif
-                ">
-                    <a href="#"
-                        class="nav-link @if ($route === route('download.laptop') || $route === route('download.external1') || $route === route('download.ms1') || $route === route('download.external2'))active @endif">
-                        <i class="nav-icon fas fa-archive"></i>
-                        <p>
-                            Storage
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                @if (preg_match("/anime\?storage=/", $route)) menu-open @endif ">
+                    <a href=" #" class="nav-link @if (preg_match("/anime\?storage=/", $route)) active @endif">
+                    <i class="nav-icon fas fa-archive"></i>
+                    <p>
+                        Storage
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.ms1') }}"
-                                class="nav-link @if (url()->current() === route('download.ms1'))active @endif">
+                            <a href="{{ route('anime', ['storage' => '1']) }}"
+                                class="nav-link @if ($route === "/anime?storage=1")active @endif">
                                 <i class="nav-icon fab fa-usb"></i>
                                 <p>
                                     MS-1 (Flash Drive)
@@ -194,8 +180,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.external1') }}"
-                                class="nav-link @if (url()->current() === route('download.external1'))active @endif">
+                            <a href="{{ route('anime', ['storage' => '2']) }}"
+                                class="nav-link @if ($route === "/anime?storage=2")active @endif">
                                 <i class="nav-icon fas fa-hdd"></i>
                                 <p>
                                     Harddisk Ext 1 (250 GB)
@@ -203,8 +189,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.external2') }}"
-                                class="nav-link @if (url()->current() === route('download.external2'))active @endif">
+                            <a href="{{ route('anime', ['storage' => '4']) }}"
+                                class="nav-link @if ($route === "/anime?storage=4")active @endif">
                                 <i class="nav-icon fas fa-hdd"></i>
                                 <p>
                                     Harddisk Ext 2 (4 TB)
@@ -212,8 +198,8 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('download.laptop') }}"
-                                class="nav-link @if (url()->current() === route('download.laptop'))active @endif">
+                            <a href="{{ route('anime', ['storage' => '3']) }}"
+                                class="nav-link @if ($route === "/anime?storage=3")active @endif">
                                 <i class="nav-icon fas fa-laptop"></i>
                                 <p>
                                     Laptop

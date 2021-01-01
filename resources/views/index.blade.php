@@ -47,7 +47,8 @@
                         <div class="icon">
                             <i class="ion ion-android-checkmark-circle"></i>
                         </div>
-                        <a href="{{ route('watch.watched') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('anime',['status'=>'2']) }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -61,7 +62,8 @@
                         <div class="icon">
                             <i class="ion ion-social-youtube-outline"></i>
                         </div>
-                        <a href="{{ route('watch.watching') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('anime',['status'=>'1']) }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -75,7 +77,8 @@
                         <div class="icon">
                             <i class="ion ion-checkmark"></i>
                         </div>
-                        <a href="{{ route('download.complete') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('anime',['download'=>'2']) }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -89,7 +92,8 @@
                         <div class="icon">
                             <i class="ion ion-ios-clock-outline"></i>
                         </div>
-                        <a href="{{ route('download.process') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('anime',['download'=>'1']) }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

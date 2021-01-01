@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return view('home');
         $data = Main::all();
         $watched = Main::where('status', 2)->count();
         $watching = Main::where('status', 1)->count();
@@ -33,87 +32,156 @@ class HomeController extends Controller
         return view('index', ['data' => $data, 'home' => true, 'watched' => $watched, 'watching' => $watching, 'complete' => $complete, 'process' => $process, 'page' => 'Dashboard']);
     }
 
-    public function watchWatching()
+    public function animeIndex(Request $request)
     {
-        $data = Main::where('status', 1)->get();
-        return view('index', ['data' => $data, 'page' => 'Watching Anime']);
-    }
+        $type = $request->query('type');
+        $status = $request->query('status');
+        $download = $request->query('download');
+        $res = $request->query('res');
+        $storage = $request->query('storage');
 
-    public function watchWatched()
-    {
-        $data = Main::where('status', 2)->get();
-        return view('index', ['data' => $data, 'page' => 'Watched Anime']);
-    }
+        if (!is_null($type)) {
+            $data = Main::where('type', $type)->get();
+            switch ($type) {
+                case '1':
+                    $page = 'TV';
+                    break;
+                case '2':
+                    $page = 'OVA';
+                    break;
+                case '3':
+                    $page = 'ONA';
+                    break;
+                case '4':
+                    $page = 'OAD';
+                    break;
+                case '5':
+                    $page = 'Movie';
+                    break;
+                case '6':
+                    $page = 'Special';
+                    break;
+                case '7':
+                    $page = 'BD';
+                    break;
+                case '8':
+                    $page = 'OVA & BD';
+                    break;
+                case '9':
+                    $page = 'ONA & BD';
+                    break;
+                case '10':
+                    $page = 'OAD & BD';
+                    break;
+                case '11':
+                    $page = 'Movie & BD';
+                    break;
+                case '12':
+                    $page = 'Special & BD';
+                    break;
+                default:
+                    $page = 'Unknown Type';
+                    break;
+            }
+        } else if (!is_null($status)) {
+            $data = Main::where('status', $status)->get();
+            switch ($status) {
+                case '1':
+                    $page = 'Watching';
+                    break;
+                case '2':
+                    $page = 'Watched';
+                    break;
+                case '3':
+                    $page = 'Plan to Watch';
+                    break;
+                case '4':
+                    $page = 'On hold';
+                    break;
+                case '5':
+                    $page = 'Dropped';
+                    break;
+                case '6':
+                    $page = 'No Watch';
+                    break;
+                default:
+                    $page = 'Unknown Status';
+                    break;
+            }
+        } else if (!is_null($download)) {
+            $data = Main::where('download_status', $download)->get();
+            switch ($download) {
+                case '1':
+                    $page = 'On Process';
+                    break;
+                case '2':
+                    $page = 'Completed';
+                    break;
+                case '3':
+                    $page = 'Plan to Download';
+                    break;
+                case '4':
+                    $page = 'No Download';
+                    break;
+                default:
+                    $page = 'Unknown Download';
+                    break;
+            }
+        } else if (!is_null($res)) {
+            $data = Main::where('resolution', $res)->get();
+            switch ($res) {
+                case '0':
+                    $page = 'No Resolution (Not Yet Downloaded)';
+                    break;
+                case '1':
+                    $page = '240p';
+                    break;
+                case '2':
+                    $page = '360p';
+                    break;
+                case '3':
+                    $page = '480p';
+                    break;
+                case '4':
+                    $page = '720p';
+                    break;
+                case '5':
+                    $page = '1080p';
+                    break;
+                case '6':
+                    $page = 'Else Resolution';
+                    break;
+                default:
+                    $page = 'Unknown Resolution';
+                    break;
+            }
+        } else if (!is_null($storage)) {
+            $data = Main::where('storage_device', $storage)->get();
+            switch ($storage) {
+                case '0':
+                    $page = 'No Storage (Not Yet Downloaded)';
+                    break;
+                case '1':
+                    $page = 'MS-1 Storage';
+                    break;
+                case '2':
+                    $page = 'Harddisk Ext 1 (250 GB) Storage';
+                    break;
+                case '3':
+                    $page = 'Laptop Storage';
+                    break;
+                case '4':
+                    $page = 'Harddisk Ext 2 (4 TB) Storage';
+                    break;
+                default:
+                    $page = 'Unknown Storage';
+                    break;
+            }
+        } else {
+            $page = 'All';
+            $data = Main::all();
+        }
 
-    public function watchPlan()
-    {
-        $data = Main::where('status', 3)->get();
-        return view('index', ['data' => $data, 'page' => 'Plan to Watch Anime']);
-    }
-
-    public function watchHold()
-    {
-        $data = Main::where('status', 4)->get();
-        return view('index', ['data' => $data, 'page' => 'On hold Anime']);
-    }
-
-    public function watchDrop()
-    {
-        $data = Main::where('status', 5)->get();
-        return view('index', ['data' => $data, 'page' => 'Dropped Anime']);
-    }
-
-    public function watchNo()
-    {
-        $data = Main::where('status', 6)->get();
-        return view('index', ['data' => $data, 'page' => 'No Anime']);
-    }
-
-    public function downloadComplete()
-    {
-        $data = Main::where('download_status', 2)->get();
-        return view('index', ['data' => $data, 'page' => 'Completed Download Anime']);
-    }
-
-    public function downloadProcess()
-    {
-        $data = Main::where('download_status', 1)->get();
-        return view('index', ['data' => $data, 'page' => 'On Process Anime']);
-    }
-
-    public function downloadPlan()
-    {
-        $data = Main::where('download_status', 3)->get();
-        return view('index', ['data' => $data, 'page' => 'Plan to Download Anime']);
-    }
-
-    public function downloadNo()
-    {
-        $data = Main::where('download_status', 4)->get();
-        return view('index', ['data' => $data, 'page' => 'No Download Anime']);
-    }
-
-    public function storageMS1()
-    {
-        $data = Main::where('storage_device', 1)->get();
-        return view('index', ['data' => $data, 'page' => 'Storage MS1']);
-    }
-
-    public function storageLaptop()
-    {
-        $data = Main::where('storage_device', 3)->get();
-        return view('index', ['data' => $data, 'page' => 'Storage Laptop']);
-    }
-
-    public function storageExternal1()
-    {
-        $data = Main::where('storage_device', 2)->get();
-        return view('index', ['data' => $data, 'page' => 'Storage Harddisk External 1 (250 GB)']);
-    }
-
-    public function storageExternal2()
-    {
-        $data = Main::where('storage_device', 4)->get();
-        return view('index', ['data' => $data, 'page' => 'Storage Harddisk External 2 (4 TB)']);
+        return view('index', ['data' => $data, 'page' => $page . ' Anime']);
     }
 }
