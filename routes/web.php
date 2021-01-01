@@ -21,13 +21,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::prefix('anime')->group(function () {
-        Route::get('/', 'HomeController@animeIndex')->name('anime');
-
         Route::get('/detail/{id}', 'AnimeController@showAnimeDetail')->name('anime.detail');
         Route::post('/detail/{id}', 'AnimeController@updateAnime')->name('anime.detail.edit');
 
         Route::get('/create', 'AnimeController@viewCreateAnimePage')->name('anime.new');
         Route::post('/create', 'AnimeController@createAnime')->name('anime.new.create');
+
+        Route::delete('/{id}', 'AnimeController@deleteAnime')->name('anime.delete');
+
+        Route::get('/', 'HomeController@animeIndex')->name('anime');
     });
 
     Route::get('/profile', 'AccountController@displayProfile')->name('profile');

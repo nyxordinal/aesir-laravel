@@ -81,4 +81,12 @@ class AnimeController extends Controller
         $data->save();
         return redirect()->route('home')->with('success-edit', $data->title);
     }
+
+    public function deleteAnime($id)
+    {
+        $anime = Main::find($id);
+        $title = $anime->title;
+        $anime->delete();
+        return redirect()->route('home')->with('success-delete', $title);
+    }
 }

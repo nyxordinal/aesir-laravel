@@ -12,7 +12,7 @@
                     </h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
-            @if (session('anime-name')||session('success-edit'))
+            @if (session('anime-name')||session('success-edit')||session('success-delete'))
             <div class="row">
                 <div class="col-sm-12">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -20,6 +20,8 @@
                         "{{ session('anime-name') }}" successfully added to database !
                         @elseif(session('success-edit'))
                         Data "{{ session('success-edit') }}" updated successfully !
+                        @elseif(session('success-delete'))
+                        Data "{{ session('success-delete') }}" deleted successfully !
                         @endif
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -122,7 +124,7 @@
                                 <tbody>
                                     @foreach ($data as $anime)
                                     <tr>
-                                        <td><a href="{{ route('anime.detail', ['id' => $anime->ain]) }}">
+                                        <td><a href="{{ route('anime.detail', ['id' => $anime->ain]) }}" target="_blank">
                                                 {{$anime->title}}
                                             </a>
                                         </td>

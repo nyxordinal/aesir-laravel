@@ -227,7 +227,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#deleteModal">
+                                            Delete
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>
                             </form>
@@ -242,4 +246,30 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Anime Deletion
+                    Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure want to delete this anime ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                <form action="{{ route('anime.delete',['id' => $anime->ain]) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete Anime</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
