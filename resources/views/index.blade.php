@@ -122,7 +122,7 @@
                                 <tbody>
                                     @foreach ($data as $anime)
                                     <tr>
-                                        <td><a href="/detail/{{ $anime->ain }}">
+                                        <td><a href="{{ route('anime.detail', ['id' => $anime->ain]) }}">
                                                 {{$anime->title}}
                                             </a>
                                         </td>

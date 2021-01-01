@@ -22,13 +22,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('anime')->group(function () {
         Route::get('/', 'HomeController@animeIndex')->name('anime');
+
+        Route::get('/detail/{id}', 'AnimeController@showAnimeDetail')->name('anime.detail');
+        Route::post('/detail/{id}', 'AnimeController@updateAnime')->name('anime.detail.edit');
+
+        Route::get('/create', 'AnimeController@viewCreateAnimePage')->name('anime.new');
+        Route::post('/create', 'AnimeController@createAnime')->name('anime.new.create');
     });
-
-    Route::get('/detail/{id}', 'EditController@detail');
-    Route::post('/detail/{id}', 'EditController@update');
-
-    Route::get('/create', 'AddController@display')->name('insert');
-    Route::post('/create', 'AddController@insertNewAnime');
 
     Route::get('/profile', 'AccountController@displayProfile')->name('profile');
     Route::put('/update-profile', 'AccountController@updateProfile')->name('profile.update.submit');
