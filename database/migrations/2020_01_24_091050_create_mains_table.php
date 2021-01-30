@@ -16,7 +16,8 @@ class CreateMainsTable extends Migration
         Schema::dropIfExists('mains');
         Schema::create('mains', function (Blueprint $table) {
             $table->bigIncrements('ain');
-            $table->string('title', 255);
+            $table->unsignedBigInteger('user_id');
+            $table->string('title', 255)->unique();
             $table->text('genre')->nullable();
             $table->smallInteger('episode')->nullable();
             $table->date('airing_from')->nullable();
@@ -28,6 +29,9 @@ class CreateMainsTable extends Migration
             $table->tinyInteger('storage_device')->default(0);
             $table->text('note')->nullable();
             $table->timestamps();
+
+            // Foreign keys
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Main;
 use App\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-// use Laracsv
 
 class AccountController extends Controller
 {
@@ -93,7 +90,7 @@ class AccountController extends Controller
         }
 
         $fileName = 'exported_anime_data_' . $storageName . '_storage_' . Carbon::now()->toDateTimeString() . '.csv';
-        $table = Main::where('storage_device', $request->storage)->get();
+        $table = Auth::user()->animes()->where('storage_device', $request->storage)->get();
         $csvExporter = new \Laracsv\Export();
         return $csvExporter->build(
             $table,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Main;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnimeController extends Controller
 {
@@ -28,6 +29,13 @@ class AnimeController extends Controller
 
         $this->validate($req, $rules, $customMessages);
 
+        $user = Auth::user();
+
+        // Check anime data existence
+        if ($user->animes()->where('title', $req->title)->count()) {
+            return back()->with('download-alert', 'Anime with the title "' . $req->title . '" already exist')->withInput();
+        }
+
         $data = new Main;
         $data->title = $req->title;
         $data->genre = $req->genre;
@@ -40,13 +48,13 @@ class AnimeController extends Controller
         $data->resolution = $req->resolution;
         $data->storage_device = $req->storage;
         $data->note = $req->note;
-        $data->save();
+        $user->animes()->save($data);
         return redirect()->route('home')->with('anime-name', $data->title);
     }
 
     public function showAnimeDetail($id)
     {
-        $data = Main::find($id);
+        $data = Auth::user()->animes()->find($id);
         return view('edit', ['anime' => $data]);
     }
 
@@ -66,7 +74,7 @@ class AnimeController extends Controller
 
         $this->validate($req, $rules, $customMessages);
 
-        $data = Main::find($id);
+        $data = Auth::user()->animes()->find($id);
         $data->title = $req->title;
         $data->genre = $req->genre;
         $data->episode = $req->episode;
@@ -84,7 +92,7 @@ class AnimeController extends Controller
 
     public function deleteAnime($id)
     {
-        $anime = Main::find($id);
+        $anime = Auth::user()->animes()->find($id);
         $title = $anime->title;
         $anime->delete();
         return redirect()->route('home')->with('success-delete', $title);

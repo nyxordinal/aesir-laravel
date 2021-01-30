@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Main;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,11 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Main::all();
-        $watched = Main::where('status', 2)->count();
-        $watching = Main::where('status', 1)->count();
-        $complete = Main::where('download_status', 2)->count();
-        $process = Main::where('download_status', 1)->count();
+        $user = Auth::user();
+        $data = $user->animes;
+        $watched = $user->animes()->where('status', 2)->count();
+        $watching = $user->animes()->where('status', 1)->count();
+        $complete = $user->animes()->where('download_status', 2)->count();
+        $process = $user->animes()->where('download_status', 1)->count();
         return view('index', ['data' => $data, 'home' => true, 'watched' => $watched, 'watching' => $watching, 'complete' => $complete, 'process' => $process, 'page' => 'Dashboard']);
     }
 
@@ -41,7 +43,7 @@ class HomeController extends Controller
         $storage = $request->query('storage');
 
         if (!is_null($type)) {
-            $data = Main::where('type', $type)->get();
+            $data =  Auth::user()->animes()->where('type', $type)->get();
             switch ($type) {
                 case '1':
                     $page = 'TV';

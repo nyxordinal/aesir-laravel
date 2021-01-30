@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the anime data that belongs to user
+     */
+    public function animes()
+    {
+        return $this->hasMany('App\Main');
+    }
 }
