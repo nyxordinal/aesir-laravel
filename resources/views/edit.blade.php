@@ -193,6 +193,8 @@
                                                 <option value="5" @if ($anime->resolution==5||old('resolution')==5)
                                                     selected @endif>1080p</option>
                                                 <option value="6" @if ($anime->resolution==6||old('resolution')==6)
+                                                    selected @endif>4K/2160p</option>
+                                                <option value="7" @if ($anime->resolution==7||old('resolution')==7)
                                                     selected @endif>Else...</option>
                                             </select>
                                         </div>

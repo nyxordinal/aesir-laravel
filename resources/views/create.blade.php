@@ -177,7 +177,9 @@
                                                 </option>
                                                 <option value="5" @if (old('resolution')==5) selected @endif>1080p
                                                 </option>
-                                                <option value="6" @if (old('resolution')==6) selected @endif>Else...
+                                                <option value="6" @if (old('resolution')==5) selected @endif>4K/2160p
+                                                </option>
+                                                <option value="7" @if (old('resolution')==6) selected @endif>Else...
                                                 </option>
                                             </select>
                                         </div>
