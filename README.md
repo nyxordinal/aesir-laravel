@@ -24,6 +24,11 @@ Aesir is a web-based Anime Database Management System that have a purpose to let
 3. Run seeder  
    `php artisan db:seed`
 
+## Docker Deployment
+
+1. Duplicate `.env.example` to `.env` and fill the values in it
+2. Run this command `docker-compose up -d`
+
 ## Developer Team
 
 Muhammad Fakhri ([@muhammad-fakhri](https://github.com/muhammad-fakhri))

@@ -1,0 +1,19 @@
+version: "3.5"
+services:
+  appz:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    command: 'php artisan serve --host=0.0.0.0'
+    container_name: aesir
+    volumes:
+        - .:/app
+    networks:
+      - db
+    ports:
+        - 8005:8000
+
+networks:
+  db:
+    name: db
+    external: true
